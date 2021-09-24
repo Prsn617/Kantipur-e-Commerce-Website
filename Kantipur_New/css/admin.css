@@ -1,0 +1,78 @@
+.head{
+    justify-content: space-between;
+    background-color: var(--purple);
+}
+
+.logo a,
+.nav a{
+    color: #ddd;
+}
+
+.nav a:hover{
+    color: #fff;
+}
+
+.nav{
+    font-size: 20px;
+    font-family: "Arial";
+    margin: 0;
+}
+
+.admin-main{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+}
+
+.product-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+}
+
+.product-form h1{
+    align-self: center;
+    margin-bottom: 18px;
+}
+
+.product-form form{
+    display: flex;
+    flex-direction: column;
+}
+
+.product-form label{
+    margin-bottom: 2px;
+}
+
+.product-form input,
+.product-form button{
+    padding: 3px 5px;
+}
+
+.product-form input{
+    margin-bottom: 15px;
+}
+
+.upd-btn{
+    background-color: var(--warning);
+    border-radius: 0;
+    border: none;
+}
+
+.user-table h1{
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+th,td{
+    padding: 4px 16px;
+    text-align: center;
+    border-top: 1px solid gray;
+}
+
+td button, 
+nav>form>button{
+    padding: 4px 7px;
+}
+
