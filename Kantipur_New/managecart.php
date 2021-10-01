@@ -7,7 +7,7 @@
                 if(in_array($_POST['Pname'], $myItems)){
                     echo"<script>
                         console.log(document.referrer);
-                        alert('Item added');
+                        alert('Item already added');
                         if(document.referrer === 'http://localhost:8080/Kantipur_New/products.php'){
                             window.location.href = 'products.php';
                         }
@@ -26,11 +26,13 @@
                     $date = date("j M Y ");
 
                     dataFetch($pid);
+                    $actual_pid = $GLOBALS['id'];
                     $stock = $GLOBALS['qty'] - $_POST['num'];
-                    $sql2 = "UPDATE product SET Quantity='$stock' WHERE prdPos=$pid";
-                    mysqli_query($conn, $sql2);
-                    $sqlcart = "INSERT INTO cart (date, userId, Pid) VALUES('".$date."', ".$uid.", ".$pid.");";
-                    mysqli_query($conn, $sqlcart) or die(mysqli_error($conn));;
+
+                    $sqlqty = "UPDATE product SET Quantity='$stock' WHERE prdPos=$pid";
+                    $sqlcart = "INSERT INTO cart (date, userId, Pid, status) VALUES('".$date."', ".$uid.", ".$actual_pid.", 0);";
+                    mysqli_query($conn, $sqlqty);
+                    mysqli_query($conn, $sqlcart);
                     mysqli_close($conn);
 
                     echo"<script>
@@ -52,12 +54,15 @@
                 $pid = $_POST['Pid'];
                 $uid = $_SESSION["username"];
                 $date = date("j  M Y ");
-                $sqlcart = "INSERT INTO cart (date, userId, Pid) VALUES('$date', $uid, $pid);";
 
                 dataFetch($pid);
                 $stock = $GLOBALS['qty'] - $_POST['num'];
-                $sql2 = "UPDATE product SET Quantity='$stock' WHERE prdPos=$pid";
-                mysqli_query($conn, $sql2);
+                $actual_pid = $GLOBALS['id'];
+
+                
+                $sqlqty = "UPDATE product SET Quantity='$stock' WHERE prdPos=$pid";
+                $sqlcart = "INSERT INTO cart (date, userId, Pid, status) VALUES('".$date."', ".$uid.", ".$actual_pid.", 0);";
+                mysqli_query($conn, $sqlqty);
                 mysqli_query($conn, $sqlcart);
                 mysqli_close($conn);
 
@@ -106,5 +111,6 @@
             $GLOBALS['name'] = $row['prdName'];
             $GLOBALS['price'] = $row['prdPrice'];
             $GLOBALS['qty'] = $row['Quantity'];
+            $GLOBALS['id'] = $row['Pid'];
         }
     ?>

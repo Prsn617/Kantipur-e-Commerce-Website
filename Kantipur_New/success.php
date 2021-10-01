@@ -32,3 +32,19 @@ $data =[
     else{
         echo'<h1>Bruhh</h1>';
     }
+
+    $count = count($_SESSION['cart']);
+    $conn = mysqli_connect("localhost", "root", "", "kantipur");
+    $sqlLast = "SELECT * FROM cart ORDER BY cartId DESC LIMIT 1;";
+    $res = mysqli_query($conn, $sqlLast);
+    $rows = mysqli_fetch_assoc($res);
+    $lastId = $rows['cartId'];
+
+    $sId = $lastId - $count + 1;
+
+    for($i = $sId; $i <= $lastId; $i++){
+        $sqlStatus = "UPDATE cart SET status=1 WHERE cartId =$i";
+        mysqli_query($conn, $sqlStatus);
+    }
+    mysqli_close($conn);
+
