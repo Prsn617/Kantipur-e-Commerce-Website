@@ -7,7 +7,7 @@
             <div class="about">
                 <h1>Special Winter Offer!!</h1>
                 <h4>Get upto 20% discounts on all kinds of chocolate products.</h4>
-                <button>View Products</button>
+                <a href="products.php"><button>View Products</button></a>
             </div>
         </div>
 
@@ -16,51 +16,75 @@
 
             <div class="featured-products">
                 <div class="featured-img">
-                    <form action="managecart.php" method="post">
+                    <?php if(isset($_SESSION["userid"])){
+                    echo '<form action="managecart.php" method="post">';
+                }
+                else{
+                    echo '<form action="signup.php" method="post">'; 
+                }?>
                         <img src="images/getImage.php?id=11" alt="" srcset="">
                         <label><?php dataFetch(11); echo $GLOBALS['name']; ?></label>
                         <label class="price">Rs. <?php dataFetch(11); echo $GLOBALS['price']; ?></label>
-                        <input type="number" value="1" name="num" class="num">
+                        <label class="qty">Available: <?php dataFetch(11); echo $GLOBALS['qty']; ?></label>
+                        <input type="number" value="1" min="1" max="<?php echo $GLOBALS['qty']; ?>" name="num" class="num">
                         <input type="hidden" value="11" name="Pid">
                         <input type="hidden" value="<?php dataFetch(11); echo $GLOBALS['name']; ?>" name="Pname">
                         <input type="hidden" value="<?php dataFetch(11); echo $GLOBALS['price']; ?>" name="Pprice">
-                        <button type="submit" name="add-to-cart">Add to Cart</button>
+                        <button type="submit" name="add-to-cart"<?php dataFetch(11); if($GLOBALS['qty']==0)echo"disabled"; ?>>Add to Cart</button>
                     </form>
                 </div>
                     <div class="featured-img">
-                    <form action="managecart.php" method="post">
+                    <?php if(isset($_SESSION["userid"])){
+                    echo '<form action="managecart.php" method="post">';
+                }
+                else{
+                    echo '<form action="signup.php" method="post">'; 
+                }?>
                         <img src="images/getImage.php?id=12" alt="" srcset="">
                         <label><?php dataFetch(12); echo $GLOBALS['name']; ?></label>
                         <label class="price">Rs. <?php dataFetch(12); echo $GLOBALS['price']; ?></label>
-                        <input type="number" value="1" name="num" class="num">                       
+                        <label class="qty">Available: <?php dataFetch(12); echo $GLOBALS['qty']; ?></label>
+                        <input type="number" value="1" min="1" max="<?php echo $GLOBALS['qty']; ?>" name="num" class="num">                       
                         <input type="hidden" value="12" name="Pid">
                         <input type="hidden" value="<?php dataFetch(12); echo $GLOBALS['name']; ?>" name="Pname">
                         <input type="hidden" value="<?php dataFetch(12); echo $GLOBALS['price']; ?>" name="Pprice">
-                        <button type="submit" name="add-to-cart">Add to Cart</button>
+                        <button type="submit" name="add-to-cart"<?php dataFetch(12); if($GLOBALS['qty']==0)echo"disabled"; ?>>Add to Cart</button>
                     </form>
                 </div>
                     <div class="featured-img">
-                    <form action="managecart.php" method="post">
+                    <?php if(isset($_SESSION["userid"])){
+                    echo '<form action="managecart.php" method="post">';
+                }
+                else{
+                    echo '<form action="signup.php" method="post">'; 
+                }?>
                         <img src="images/getImage.php?id=13" alt="" srcset="">
                         <label><?php dataFetch(13); echo $GLOBALS['name']; ?></label>
                         <label class="price">Rs. <?php dataFetch(13); echo $GLOBALS['price']; ?></label>
-                        <input type="number" value="1" name="num" class="num">                       
+                        <label class="qty">Available: <?php dataFetch(13); echo $GLOBALS['qty']; ?></label>
+                        <input type="number" value="1" min="1" max="<?php echo $GLOBALS['qty']; ?>" name="num" class="num">                       
                         <input type="hidden" value="13" name="Pid">
                         <input type="hidden" value="<?php dataFetch(13); echo $GLOBALS['name']; ?>" name="Pname">
                         <input type="hidden" value="<?php dataFetch(13); echo $GLOBALS['price']; ?>" name="Pprice">
-                        <button type="submit" name="add-to-cart">Add to Cart</button>
+                        <button type="submit" name="add-to-cart"<?php dataFetch(13); if($GLOBALS['qty']==0)echo"disabled"; ?>>Add to Cart</button>
                     </form>
                 </div>
                     <div class="featured-img">
-                    <form action="managecart.php" method="post">
+                    <?php if(isset($_SESSION["userid"])){
+                    echo '<form action="managecart.php" method="post">';
+                }
+                else{
+                    echo '<form action="signup.php" method="post">'; 
+                }?>
                         <img src="images/getImage.php?id=14" alt="" srcset="">
                         <label><?php dataFetch(14); echo $GLOBALS['name']; ?></label>
                         <label class="price">Rs. <?php dataFetch(14); echo $GLOBALS['price']; ?></label>
-                        <input type="number" value="1" name="num" class="num">                        
+                        <label class="qty">Available: <?php dataFetch(14); echo $GLOBALS['qty']; ?></label>
+                        <input type="number" value="1" min="1" max="<?php echo $GLOBALS['qty']; ?>" name="num" class="num">                        
                         <input type="hidden" value="14" name="Pid">
                         <input type="hidden" value="<?php dataFetch(14); echo $GLOBALS['name']; ?>" name="Pname">
                         <input type="hidden" value="<?php dataFetch(14); echo $GLOBALS['price']; ?>" name="Pprice">
-                        <button type="submit" name="add-to-cart">Add to Cart</button>
+                        <button type="submit" name="add-to-cart"<?php dataFetch(14); if($GLOBALS['qty']==0)echo"disabled"; ?>>Add to Cart</button>
                     </form>
                 </div>
             </div>
@@ -69,82 +93,117 @@
         <hr>
 
         <div class="products-container">
-
             <div class="products-img">
-                <form action="managecart.php" method="post">
+                <?php if(isset($_SESSION["userid"])){
+                        echo '<form action="managecart.php" method="post">';
+                    }
+                    else{
+                        echo '<form action="signup.php" method="post">';
+                    }?> 
                     <img src="images/getImage.php?id=21" alt="" srcset="">
                     <label><?php dataFetch(21); echo $GLOBALS['name']; ?></label>
                     <label class="price">Rs. <?php dataFetch(21); echo $GLOBALS['price']; ?></label>
-                    <input type="number" value="1" name="num" class="num">
+                    <label class="qty">Available: <?php dataFetch(21); echo $GLOBALS['qty']; ?></label>
+                    <input type="number" value="1" min="1" max="<?php echo $GLOBALS['qty']; ?>" name="num" class="num">
                     <input type="hidden" value="21" name="Pid">
                     <input type="hidden" value="<?php dataFetch(21); echo $GLOBALS['name']; ?>" name="Pname">
                     <input type="hidden" value="<?php dataFetch(21); echo $GLOBALS['price']; ?>" name="Pprice">
-                    <button type="submit" name="add-to-cart">Add to Cart</button>
+                    <button type="submit" name="add-to-cart"<?php dataFetch(21); if($GLOBALS['qty']==0)echo"disabled"; ?>>Add to Cart</button>
                 </form>
             </div>
-
+            
             <div class="products-img">
-                <form action="managecart.php" method="post">
+                <?php if(isset($_SESSION["userid"])){
+                        echo '<form action="managecart.php" method="post">';
+                    }
+                    else{
+                        echo '<form action="signup.php" method="post">'; 
+                    }?>
                     <img src="images/getImage.php?id=22" alt="" srcset="">
                     <label><?php dataFetch(22); echo $GLOBALS['name']; ?></label>
                     <label class="price">Rs. <?php dataFetch(22); echo $GLOBALS['price']; ?></label>
-                    <input type="number" value="1" name="num" class="num">
+                    <label class="qty">Available: <?php dataFetch(22); echo $GLOBALS['qty']; ?></label>
+                    <input type="number" value="1" min="1" max="<?php echo $GLOBALS['qty']; ?>" name="num" class="num">
                     <input type="hidden" value="22" name="Pid">
                     <input type="hidden" value="<?php dataFetch(22); echo $GLOBALS['name']; ?>" name="Pname">
                     <input type="hidden" value="<?php dataFetch(22); echo $GLOBALS['price']; ?>" name="Pprice">
-                    <button type="submit" name="add-to-cart">Add to Cart</button>
+                    <button type="submit" name="add-to-cart"<?php dataFetch(22); if($GLOBALS['qty']==0)echo"disabled"; ?>>Add to Cart</button>
                 </form>
             </div>
-
+            
             <div class="products-img">
-                <form action="managecart.php" method="post">
+                <?php if(isset($_SESSION["userid"])){
+                        echo '<form action="managecart.php" method="post">';
+                    }
+                    else{
+                        echo '<form action="signup.php" method="post">'; 
+                    }?>
                     <img src="images/getImage.php?id=23" alt="" srcset="">
                     <label><?php dataFetch(23); echo $GLOBALS['name']; ?></label>
                     <label class="price">Rs. <?php dataFetch(23); echo $GLOBALS['price']; ?></label>
-                    <input type="number" value="1" name="num" class="num">
+                    <label class="qty">Available: <?php dataFetch(23); echo $GLOBALS['qty']; ?></label>
+                    <input type="number" value="1" min="1" max="<?php echo $GLOBALS['qty']; ?>" name="num" class="num">
                     <input type="hidden" value="23" name="Pid">
                     <input type="hidden" value="<?php dataFetch(23); echo $GLOBALS['name']; ?>" name="Pname">
                     <input type="hidden" value="<?php dataFetch(23); echo $GLOBALS['price']; ?>" name="Pprice">
-                    <button type="submit" name="add-to-cart">Add to Cart</button>
+                    <button type="submit" name="add-to-cart"<?php dataFetch(23); if($GLOBALS['qty']==0)echo"disabled"; ?>>Add to Cart</button>
                 </form>
             </div>
 
             <div class="products-img">
-                <form action="managecart.php" method="post">
+                <?php if(isset($_SESSION["userid"])){
+                    echo '<form action="managecart.php" method="post">';
+                }
+                else{
+                    echo '<form action="signup.php" method="post">'; 
+                }?>
                     <img src="images/getImage.php?id=31" alt="" srcset="">
                     <label><?php dataFetch(31); echo $GLOBALS['name']; ?></label>
                     <label class="price">Rs. <?php dataFetch(31); echo $GLOBALS['price']; ?></label>
-                    <input type="number" value="1" name="num" class="num" name="num" class="num">
+                    <label class="qty">Available: <?php dataFetch(31); echo $GLOBALS['qty']; ?></label>
+                    <input type="number" value="1" min="1" max="<?php echo $GLOBALS['qty']; ?>" name="num" class="num" name="num" class="num">
                     <input type="hidden" value="31" name="Pid">
                     <input type="hidden" value="<?php dataFetch(31); echo $GLOBALS['name']; ?>" name="Pname">
                     <input type="hidden" value="<?php dataFetch(31); echo $GLOBALS['price']; ?>" name="Pprice">
-                    <button type="submit" name="add-to-cart">Add to Cart</button>
+                    <button type="submit" name="add-to-cart"<?php dataFetch(31); if($GLOBALS['qty']==0)echo"disabled"; ?>>Add to Cart</button>
                 </form>
             </div>
-
+            
             <div class="products-img">
-                <form action="managecart.php" method="post">
+                <?php if(isset($_SESSION["userid"])){
+                        echo '<form action="managecart.php" method="post">';
+                    }
+                    else{
+                        echo '<form action="signup.php" method="post">'; 
+                    }?>
                     <img src="images/getImage.php?id=32" alt="" srcset="">
                     <label><?php dataFetch(32); echo $GLOBALS['name']; ?></label>
                     <label class="price">Rs. <?php dataFetch(32); echo $GLOBALS['price']; ?></label>
-                    <input type="number" value="1" name="num" class="num">
+                    <label class="qty">Available: <?php dataFetch(32); echo $GLOBALS['qty']; ?></label>
+                    <input type="number" value="1" min="1" max="<?php echo $GLOBALS['qty']; ?>" name="num" class="num">
                     <input type="hidden" value="32" name="Pid">
                     <input type="hidden" value="<?php dataFetch(32); echo $GLOBALS['name']; ?>" name="Pname">
                     <input type="hidden" value="<?php dataFetch(32); echo $GLOBALS['price']; ?>" name="Pprice">
-                    <button type="submit" name="add-to-cart">Add to Cart</button>
+                    <button type="submit" name="add-to-cart"<?php dataFetch(32); if($GLOBALS['qty']==0)echo"disabled"; ?>>Add to Cart</button>
                 </form>
             </div>
-
+            
             <div class="products-img">
-                <form action="managecart.php" method="post">
+                <?php if(isset($_SESSION["userid"])){
+                        echo '<form action="managecart.php" method="post">';
+                    }
+                    else{
+                        echo '<form action="signup.php" method="post">';
+                    }?>             
                     <img src="images/getImage.php?id=33" alt="" srcset="">
                     <label><?php dataFetch(33); echo $GLOBALS['name']; ?></label>
                     <label class="price">Rs. <?php dataFetch(33); echo $GLOBALS['price']; ?></label>
-                    <input type="number" value="1" name="num" class="num">
+                    <label class="qty">Available: <?php dataFetch(33); echo $GLOBALS['qty']; ?></label>
+                    <input type="number" value="1" min="1" max="<?php echo $GLOBALS['qty']; ?>" name="num" class="num">
                     <input type="hidden" value="33" name="Pid">
                     <input type="hidden" value="<?php dataFetch(33); echo $GLOBALS['name']; ?>" name="Pname">
                     <input type="hidden" value="<?php dataFetch(33); echo $GLOBALS['price']; ?>" name="Pprice">
-                    <button type="submit" name="add-to-cart">Add to Cart</button>
+                    <button type="submit" name="add-to-cart"<?php dataFetch(33); if($GLOBALS['qty']==0)echo"disabled"; ?>>Add to Cart</button>
                 </form>
             </div>
         </div>
@@ -159,7 +218,8 @@
             mysqli_close($conn);
             
             $GLOBALS['name'] = $row['prdName'];
-            $GLOBALS['price'] =$row['prdPrice'];
+            $GLOBALS['price'] = $row['prdPrice'];
+            $GLOBALS['qty'] = $row['Quantity'];
         }
     ?>
 

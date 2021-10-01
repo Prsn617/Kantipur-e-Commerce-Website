@@ -81,7 +81,12 @@
             </div>
             <div class="price-total">
                 <h3>Total:</h3>
-                <h5>Rs. '.$total.'</h5>'?>
+                <h5>Rs. '.$total.'</h5>';
+                $_SESSION['total'] = $ttotal;
+                $_SESSION['rpid'] = "kantipur".rand(10, 100000);
+                $pid = $_SESSION['rpid'];
+                ?>
+
                 <form action="https://uat.esewa.com.np/epay/main" method="POST">
                     <input value="<?php echo $ttotal ?>" name="tAmt" type="hidden">
                     <input value="<?php echo $total ?>" name="amt" type="hidden">
@@ -89,9 +94,9 @@
                     <input value="0" name="psc" type="hidden">
                     <input value="<?php echo $delivery ?>" name="pdc" type="hidden">
                     <input value="EPAYTEST" name="scd" type="hidden">
-                    <input value="12332hjhjhj1" name="pid" type="hidden">
-                    <input value="http://localhost:8080/Kantipur_new/sucess.php?q=su" type="hidden" name="su">
-                    <input value="http://localhost:8080/Kantipur_new/sucess.php?q=fu" type="hidden" name="fu">
+                    <input value="<?php echo $pid ?>" name="pid" type="hidden">
+                    <input value="http://localhost:8080/Kantipur_New/success.php?q=su" type="hidden" name="su">
+                    <input value="http://localhost:8080/Kantipur_New/success.php?q=fu" type="hidden" name="fu">
                     <input value="Pay with e-Sewa" type="submit" class="eSubmit">
                 </form>
             </div>

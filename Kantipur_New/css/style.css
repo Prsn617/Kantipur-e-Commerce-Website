@@ -184,6 +184,13 @@
     margin-top: 7px;
     font-size: 16px;
   }
+
+  .featured-img button:disabled,
+  .products-img button:disabled{
+    background: gray;
+    border: 1px solid gray;
+    text-decoration: line-through;
+  }
   
   hr {
     background-color: var(--purple);
@@ -277,5 +284,10 @@
     border-radius: 12px;
     font-size: 16px;
     background-color: #ddd;
+    color: var(--purple);
+  }
+
+  footer button:hover{
+    color: #eee;
   }
   

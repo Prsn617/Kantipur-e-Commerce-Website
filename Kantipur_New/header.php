@@ -28,7 +28,7 @@
         <div class="acc">
             <?php
                 if(isset($_SESSION["userid"])){
-                    echo'<h6><a href="account.php">My account</a></h6>';
+                    echo'<h6><a href="account.php">'.$_SESSION["username"].'</a></h6>';
                 }
                 else{
                     echo'<h6><a href="login.php">Sign In</a></h6>';
@@ -39,10 +39,10 @@
                     $count = count($_SESSION['cart']);
                 }
             ?>
-            <button><a href="cart.php">
+            <a href="cart.php"><button>
                 <span class="material-icons">shopping_cart</span> 
-                <?php echo $count ?></a>
-            </button>
+                <?php echo $count ?>
+            </button></a>
         </div>
 
         <input type="checkbox" class="hidden" id="box" onclick="toggler()">

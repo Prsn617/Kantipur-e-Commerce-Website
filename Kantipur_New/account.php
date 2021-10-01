@@ -3,7 +3,7 @@
 ?>
 
     <main class="acc-main">
-        <?php echo "<h1>Hello ". $_SESSION['username']. "</h1>" ?>
+        <?php echo "<h1>Welcome ". $_SESSION['username']. "</h1>" ?>
         <div class="user-history"></div>
         <div class="setting">
             <input type="checkbox" id="sett" class="sett">
@@ -45,7 +45,8 @@
 
         if(isset($_POST['user-upd'])){
             $user = $_POST['uName'];
-            $userSql = "UPDATE user_info SET userName='$user'";
+            $uid = $_SESSION['userid'];
+            $userSql = "UPDATE user_info SET userName='$user' WHERE userId=$uid";
             mysqli_query($conn, $userSql);
             $_SESSION['username'] = $user;
             header("Refresh:0");
@@ -68,7 +69,8 @@
                 exit();
             }
             else{
-                $passSql = "UPDATE user_info SET userPass='$newPass_hash'";
+                $uid = $_SESSION['userid'];
+                $passSql = "UPDATE user_info SET userPass='$newPass_hash' WHERE userId=$uid";
                 mysqli_query($conn, $passSql);
                 $_SESSION['userpass'] = $newPass_hash;
                 header("Refresh:0");

@@ -26,9 +26,10 @@
 
 .product-form{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 32px;
+    padding-bottom: 20px;
 }
 
 .product-form h1{
@@ -58,6 +59,11 @@
     background-color: var(--warning);
     border-radius: 0;
     border: none;
+}
+
+.upd-btn:hover{
+    border: none;
+    background: red;
 }
 
 .user-table h1{

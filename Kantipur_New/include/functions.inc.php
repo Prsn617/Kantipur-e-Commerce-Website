@@ -95,7 +95,7 @@ function loginUser($conn, $email, $pass){
         exit();
     }
     elseif($checkpass === true){
-        if($email == 'admin@a.a' && $pass == 'bruhh'){
+        if($email == 'admin@ktp.com' && $pass == 'prsn617'){
             $_SESSION["admin"] = 'Admin';
             header("location: ../admin.php");
             exit();
