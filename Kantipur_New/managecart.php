@@ -22,17 +22,19 @@
                     
                     $conn = mysqli_connect("localhost", "root", "", "kantipur");
                     $pid = $_POST['Pid'];
+                    $pqty = (int)$_POST['num'];
                     $uid = $_SESSION["userid"];
-                    $date = date("j M Y ");
+                    $date = date("j M y");
 
                     dataFetch($pid);
-                    $actual_pid = $GLOBALS['id'];
                     $stock = $GLOBALS['qty'] - $_POST['num'];
+                    $actual_pid = $GLOBALS['id'];
 
+                    
                     $sqlqty = "UPDATE product SET Quantity='$stock' WHERE prdPos=$pid";
-                    $sqlcart = "INSERT INTO cart (date, userId, Pid, status) VALUES('".$date."', ".$uid.", ".$actual_pid.", 0);";
+                    $sqlcart = "INSERT INTO cart (date, userId, Pid, pQty, status) VALUES('".$date."', ".$uid.", ".$actual_pid.", ".$pqty.", 0);";
                     mysqli_query($conn, $sqlqty);
-                    mysqli_query($conn, $sqlcart);
+                    mysqli_query($conn, $sqlcart) or die(mysqli_error($conn));;
                     mysqli_close($conn);
 
                     echo"<script>
@@ -52,7 +54,8 @@
 
                 $conn = mysqli_connect("localhost", "root", "", "kantipur");
                 $pid = $_POST['Pid'];
-                $uid = $_SESSION["username"];
+                $pqty = (int)$_POST['num'];
+                $uid = $_SESSION["userid"];
                 $date = date("j  M Y ");
 
                 dataFetch($pid);
@@ -61,9 +64,9 @@
 
                 
                 $sqlqty = "UPDATE product SET Quantity='$stock' WHERE prdPos=$pid";
-                $sqlcart = "INSERT INTO cart (date, userId, Pid, status) VALUES('".$date."', ".$uid.", ".$actual_pid.", 0);";
+                $sqlcart = "INSERT INTO cart (date, userId, Pid, pQty, status) VALUES('".$date."', ".$uid.", ".$actual_pid.", ".$pqty.", 0);";
                 mysqli_query($conn, $sqlqty);
-                mysqli_query($conn, $sqlcart);
+                mysqli_query($conn, $sqlcart) or die(mysqli_error($conn));
                 mysqli_close($conn);
 
                 echo"<script>

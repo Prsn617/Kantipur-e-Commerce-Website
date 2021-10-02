@@ -18,10 +18,17 @@
     margin: 0;
 }
 
-.admin-main{
+/*.admin-main{
     display: flex;
     justify-content: space-around;
     padding-top: 50px;
+}*/
+
+.tables,
+.inp-graphs{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 4em 0 4em 0;
 }
 
 .product-form{

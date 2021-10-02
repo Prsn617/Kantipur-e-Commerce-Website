@@ -2,6 +2,7 @@
 
 session_start();
 
+$total = $_SESSION['total'];
 $ref = $_GET['refId'];
 $url = "https://uat.esewa.com.np/epay/transrec";
 $data =[
@@ -41,6 +42,18 @@ $data =[
     $lastId = $rows['cartId'];
 
     $sId = $lastId - $count + 1;
+
+    $date = date("j M y");
+    $sqlcheck = "SELECT * FROM sales WHERE TRIM(date)='".$date."'";
+    mysqli_query($conn, $sqlcheck);
+
+    if(mysqli_affected_rows($conn) > 0){
+        $sqlsale = "UPDATE sales SET sales = sales + $total WHERE TRIM(date)='".$date."'";
+    }
+    else{
+        $sqlsale = "INSERT INTO sales(date, sales) VALUES('".$date."', ".$total.")";
+    }
+    mysqli_query($conn, $sqlsale) or die(mysqli_error());
 
     for($i = $sId; $i <= $lastId; $i++){
         $sqlStatus = "UPDATE cart SET status=1 WHERE cartId =$i";
