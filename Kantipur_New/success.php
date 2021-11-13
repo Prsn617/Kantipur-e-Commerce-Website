@@ -135,7 +135,7 @@ $data =[
         //Set gmail username
             $mail->Username = "prsn617@gmail.com";
         //Set gmail password
-            $mail->Password = "nUVH^BanA@hcYq$65Fi$";
+            $mail->Password = "********";
             
         //Email subject
             $mail->Subject = "Order Placed, Kantipur Chocolate Mart";
