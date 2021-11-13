@@ -1,0 +1,293 @@
+.head {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding-inline: 8rem;
+  }
+  
+  .logo {
+    flex: 4;
+    font-size: 32px;
+    font-weight: 600;
+  }
+  
+  .logo a {
+    color: black;
+  }
+  
+  .nav {
+    flex: 1;
+    margin-right: 75px;
+  }
+  
+  .head ul {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .head li a {
+    font-size: 18px;
+    font-family: var(--font3);
+    color: var(--purple);
+    opacity: .7;
+  }
+
+  .head li a:hover{
+    opacity: .9;
+    text-shadow: 2px 2px 5px var(--purpleB);
+  }
+  
+  .headline {
+    height: 2px;
+    width: 97vw;
+    margin: 0 auto;
+    position: sticky;
+    top: 10vh;
+  }
+  
+  .acc {
+    flex: 1;
+    display: flex;
+    font-family: var(--font3);
+    align-items: center;
+  }
+  
+  .acc a {
+    font-size: 16px;
+  }
+
+  .acc a:hover{
+    color: var(--purple);
+  }
+  
+  .acc button {
+    background-color: orange;
+    border: 0;
+    padding: 5px 12px;
+    margin: 1px 25px 1px 0;
+    font-size: 16px;
+    border-radius: 20px;
+    margin-left: 40px;
+  }
+
+  .acc button a{
+    color: white;
+  }
+
+  .acc button:hover{
+    background: rgb(255, 194, 81);
+    border: 0;
+
+  }
+  
+  .burger {
+    display: none;
+  }
+
+  main{
+    background: var(--purpleB);
+  }
+
+  .about-container {
+    display: flex;
+    height: 89vh;
+    background: url("../images/chocobg.jpg");
+    background-size: cover;
+    align-items: center;
+  }
+  
+  .about {
+    display: flex;
+    flex-direction: column;
+    padding-left: 8rem;
+    width: 70vw;
+    font-family: var(--font1);
+  }
+  
+  .about h1 {
+    font-size: 60px;
+    margin-bottom: 5px;
+  }
+  
+  .about h4 {
+    color: var(--brown);
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 25px;
+  }
+  
+  .about button {
+    padding: 6px 12px;
+    font-size: 18px;
+    width: 10rem;
+  }
+  
+  .featured-container {
+    padding: 10px 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .featured-container h1 {
+    font-size: 48px;
+    font-family: var(--font2);
+    margin-bottom: 40px;
+  }
+  
+  .featured-products {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .featured-img{
+    padding: 16px;
+    margin: 5px;
+    background: #fefefe;
+    border: 2px solid lightgray;
+  }
+  
+  .featured-img form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .featured-img label,
+  .products-img label {
+    font-size: 17px;
+    margin-top: 7px;
+  }
+  
+  .featured-img img {
+    background-size: cover;
+    width: 200px;
+  }
+
+  .num{
+    width: 70px;
+    padding: 2px 3px;
+  }
+  
+  .featured-img button,
+  .products-img button {
+    padding: 5px 5px;
+    width: 200px;
+    margin-top: 7px;
+    font-size: 16px;
+  }
+
+  .featured-img button:disabled,
+  .products-img button:disabled{
+    background: gray;
+    border: 1px solid gray;
+    text-decoration: line-through;
+  }
+  
+  hr {
+    background-color: var(--purple);
+    height: 3px;
+    border: none;
+    width: 90vw;
+    margin: auto;
+    margin-bottom: 32px;
+  }
+  
+  .products-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .products-img{
+    width: 25%;
+    margin: 12px 5px;
+    background: white;
+    border: 2px solid lightgray;
+  }
+  
+  .products-img form{
+    margin: 36px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .products-img img {
+    width: 230px;
+  }
+  
+  .products-img button {
+    width: 250px;
+  }
+  
+  footer {
+    display: flex;
+    height: 20vh;
+    background-color: #1d1d21;
+    color: #ddd;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  footer .p {
+    color: #bbb;
+    font-family: "Arial";
+    font-size: 17px;
+    margin-left: 250px;
+  }
+  
+  footer .feedback {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    align-items: center;
+    margin-right: 150px;
+  }
+  
+  footer .social {
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+  
+  footer a {
+    font-size: 16px;
+    color: rgb(182, 138, 240);
+  }
+  
+  footer label {
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+  
+  footer textarea {
+    background-color: #333;
+    border: black;
+    width: 240px;
+    border-radius: 10px;
+    color: #ddd;
+    font-size: 15px;
+  }
+  
+  footer button {
+    padding: 3px 8px;
+    margin-top: 8px;
+    width: 240px;
+    border-radius: 12px;
+    font-size: 16px;
+    background-color: #ddd;
+    color: var(--purple);
+  }
+
+  footer button:hover{
+    color: #eee;
+  }
+  

@@ -1,0 +1,171 @@
+@media screen and (max-width: 1100px) and (min-width: 421px) {
+    .about-container {
+      justify-content: center;
+    }
+  
+    .featured-products {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  
+    .featured-img {
+      margin: 0 -27px;
+      display: flex;
+      width: 40%;
+      margin-bottom: 30px;
+    }
+  
+    .products-img {
+      margin: 0 -27px;
+      width: 40%;
+    }
+  
+    footer .p {
+      margin-left: 150px;
+    }
+  
+    .products-container {
+      padding-bottom: 30px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    *{
+      overflow-x: hidden;
+    }
+
+    .head {
+      transition: all 0.3s ease-in;
+    }
+  
+    .logo {
+      margin-left: 20px;
+    }
+  
+    .headline {
+      top: 10vh;
+    }
+  
+    .nav,
+    .acc {
+      display: none;
+    }
+  
+    .burger {
+      display: block;
+      margin-right: 10px;
+    }
+  
+    .about-container {
+      width: 100vw;
+      justify-content: center;
+    }
+  
+    .about {
+      width: 90vw;
+    }
+  
+    .about h1 {
+      font-size: 40px;
+    }
+  
+    .featured-container h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+  
+    .featured-img {
+      margin-bottom: 30px;
+    }
+  
+    .products-img {
+      width: auto;
+    }
+  
+    footer {
+      height: auto;
+      flex-direction: column-reverse;
+    }
+  
+    footer .p {
+      margin: auto;
+    }
+  
+    footer .social {
+      margin-bottom: 20px;
+    }
+  
+    footer .feedback {
+      margin: auto;
+      padding: 10px 0 28px 0;
+    }
+
+    .resp-head {
+      height: 60vh;
+      flex-direction: column;
+    }
+  
+    .resp-logo {
+      flex: 0.5;
+      margin-left: 10px;
+    }
+  
+    .resp-nav {
+      display: block;
+      flex: 1;
+      margin: 0;
+    }
+  
+    .resp-nav ul {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+  
+    .resp-headline {
+      top: 60vh;
+    }
+  
+    .resp-acc {
+      display: block;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .cart-items{
+      flex-direction: column;
+      align-items: center;
+    }
+
+    th,td{
+      padding: 2px 5px;
+    }
+
+    .price-total{
+      margin: 0;
+      margin-top: 64px;
+    }
+
+    .admin-main{
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+    }
+
+    .user-table{
+      margin-top: 96px;
+    }
+
+    .user-table th,
+    .user-table td{
+      padding: 2px 3px;
+      border: 1px solid gray;
+      font-size: 13px;
+    }
+  
+  }
+  

@@ -1,0 +1,57 @@
+.acc-main{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 100px;
+    height: 90vh;
+}
+
+input[type=checkbox]{
+    display: none;
+}
+
+.user-profile{
+    display: none;
+}
+
+.sett:checked~.user-profile{
+    display: block;
+}
+
+.setting>.sett-box>p{
+    text-align: right;
+    padding-right: 5px;
+}
+
+.user-profile{
+    padding: 10px 18px;
+    width: 250px;
+    border: 1px solid gray;
+}
+
+.user-profile h2{
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.user-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.user-form input{
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 17px;
+    margin: 7px 0 10px 0;
+}
+
+.user-form button{
+    width: 120px;
+    margin-bottom: 18px;
+}
+
+.logout{
+    margin-top: 10px;
+    padding: 4px 8px;
+}
+  

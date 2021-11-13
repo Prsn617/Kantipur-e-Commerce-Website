@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Andika+New+Basic:wght@400;700&display=swap");
+
+:root {
+  --purple: hsl(266, 100%, 25%);
+  --purpleL: hsl(266, 75%, 40%);
+  --purpleB: rgba(116, 45, 210, .1);
+  --brown: #4c180e;
+  --warning: #e41a2e;
+  --green: #2f790f;
+  --font1: "Poppins", sans-serif;
+  --font2: "Andika New Basic", sans-serif;
+  --font3: Arial, Helvetica, sans-serif;
+  --a: #134769;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+}
+
+body {
+  background-color: #fefefe;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.hidden{
+  display: none;
+}
+
+table{
+  border-spacing: 0;
+}
+
+button {
+  background-color: var(--purple);
+  border: 1px solid var(--purple);
+  color: #efefef;
+  border-radius: 12px;
+  padding: 4px 0;
+  cursor: pointer;
+}
+
+button:hover {
+  border: 1px solid var(--purpleL);
+  background-color: var(--purpleL);
+  transition: 300ms ease-in;
+}
+
+
