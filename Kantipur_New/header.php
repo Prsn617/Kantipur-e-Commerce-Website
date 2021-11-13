@@ -21,8 +21,8 @@
         <div class="logo"><a href="index.php">Kantipur</a></div>
         <nav class="nav">
             <ul>
-                <li><a href="products.php">Products</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="products.php">Products</a></li>              
             </ul>
         </nav>
         <div class="acc">

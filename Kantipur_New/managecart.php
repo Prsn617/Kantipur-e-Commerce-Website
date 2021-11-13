@@ -31,8 +31,8 @@
                     $actual_pid = $GLOBALS['id'];
 
                     
-                    $sqlqty = "UPDATE product SET Quantity='$stock' WHERE prdPos=$pid";
-                    $sqlcart = "INSERT INTO cart (date, userId, Pid, pQty, status) VALUES('".$date."', ".$uid.", ".$actual_pid.", ".$pqty.", 0);";
+                    $sqlqty = "UPDATE product SET Quantity = $stock WHERE prdNo = ".$pid;
+                    $sqlcart = "INSERT INTO cart (date, userId, PrdNo, pQty, status, delivered) VALUES('".$date."', ".$uid.", ".$pid.", ".$pqty.", 0, 0);";
                     mysqli_query($conn, $sqlqty);
                     mysqli_query($conn, $sqlcart) or die(mysqli_error($conn));;
                     mysqli_close($conn);
@@ -56,15 +56,15 @@
                 $pid = $_POST['Pid'];
                 $pqty = (int)$_POST['num'];
                 $uid = $_SESSION["userid"];
-                $date = date("j  M Y ");
+                $date = date("j M y");
 
                 dataFetch($pid);
                 $stock = $GLOBALS['qty'] - $_POST['num'];
                 $actual_pid = $GLOBALS['id'];
 
                 
-                $sqlqty = "UPDATE product SET Quantity='$stock' WHERE prdPos=$pid";
-                $sqlcart = "INSERT INTO cart (date, userId, Pid, pQty, status) VALUES('".$date."', ".$uid.", ".$actual_pid.", ".$pqty.", 0);";
+                $sqlqty = "UPDATE product SET Quantity = $stock WHERE prdNo =". $pid;
+                $sqlcart = "INSERT INTO cart (date, userId, PrdNo, pQty, status, delivered) VALUES('".$date."', ".$uid.", ".$pid.", ".$pqty.", 0, 0);";
                 mysqli_query($conn, $sqlqty);
                 mysqli_query($conn, $sqlcart) or die(mysqli_error($conn));
                 mysqli_close($conn);
@@ -92,7 +92,7 @@
                     $conn = mysqli_connect("localhost", "root", "", "kantipur");
                     dataFetch($pid);
                     $stock = $GLOBALS['qty'] + $value['num'];
-                    $sql2 = "UPDATE product SET  Quantity='$stock' WHERE prdPos=$pid";
+                    $sql2 = "UPDATE product SET  Quantity = $stock WHERE prdNo =".$pid;
                     mysqli_query($conn, $sql2);
                     mysqli_close($conn);
 
@@ -106,7 +106,7 @@
 
         function dataFetch(int $id){
             $conn = mysqli_connect("localhost", "root", "", "kantipur");
-            $sql = "SELECT * FROM product WHERE prdPos=$id";
+            $sql = "SELECT * FROM product WHERE prdNo = $id";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
             mysqli_close($conn);

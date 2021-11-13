@@ -41,7 +41,7 @@
 .price-total{
     font-family: var(--font3);
     width: 150px;
-    height: 120px;
+    min-height: 120px;
     padding: 10px;
     margin-top: 36px;
     margin-left: 20px;
@@ -54,6 +54,7 @@
 
 .price-total h3{
     font-size: 20px;
+    margin-bottom: .5em;
 }
 
 .price-total h5{

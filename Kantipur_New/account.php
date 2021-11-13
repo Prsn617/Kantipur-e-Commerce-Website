@@ -78,9 +78,34 @@
         }
 
         if(isset($_POST['log-out'])){
+            if(isset($_SESSION['cart'])){
+                foreach($_SESSION['cart'] as $key => $value){
+                    $pid = $value['Pid'];
+                    $conn = mysqli_connect("localhost", "root", "", "kantipur");
+                    dataFetch($pid);
+                    echo "Ayooooo:".$value['num'];
+                    $stock = $GLOBALS['qty'] + $value['num'];
+                    $sql2 = "UPDATE product SET  Quantity='$stock' WHERE prdNo = $pid";
+                    mysqli_query($conn, $sql2) or die(mysqli_error($conn));
+                    mysqli_close($conn);
+                }
+            }
             session_destroy();
             session_start();
             header('location:index.php');
+        }
+
+        function dataFetch(int $id){
+            $conn = mysqli_connect("localhost", "root", "", "kantipur");
+            $sql = "SELECT * FROM product WHERE prdNo=$id";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+            mysqli_close($conn);
+            
+            $GLOBALS['name'] = $row['prdName'];
+            $GLOBALS['price'] = $row['prdPrice'];
+            $GLOBALS['qty'] = $row['Quantity'];
+            $GLOBALS['id'] = $row['Pid'];
         }
     ?>
     <script src="js/script.js"></script>

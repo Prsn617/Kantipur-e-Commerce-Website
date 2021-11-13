@@ -11,6 +11,8 @@
                     <input type="text" name="username" id="">
                     <label for="">E-mail</label>
                     <input type="email" name="email" id="">
+                    <label for="">Phone Number</label>
+                    <input type="tel" name="tel" maxlength="10" min="1">
                     <label for="">Password</label>
                     <input type="password" name="password" id="">
                     <input type="submit" name="signup-submit" value="Sign Up" class="signSubmit">

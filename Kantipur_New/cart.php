@@ -9,8 +9,17 @@
         <div class="cart-items">
             <div class="cart-products">
             <?php 
+            $reward = 0;
             $count = 0;
             $total = 0;
+            $_SESSION['rewCheck'] = FALSE;
+
+            $conn = mysqli_connect("localhost", "root", "", "kantipur");
+            $sqlRew = "SELECT * FROM user_info WHERE userId=".$_SESSION["userid"];
+            $res = mysqli_query($conn, $sqlRew);
+            $row = mysqli_fetch_assoc($res);
+            $reward = (int)($row['userReward']);
+
             if(isset($_SESSION['cart'])){
                 $count = count($_SESSION['cart']);
                 if($count == 0){
@@ -49,6 +58,10 @@
                             foreach($_SESSION["cart"] as $key => $value){
                                 $sn = $key+1;
                                 $total = $total + ($value['Pprice'] * $value['num']);
+                                if($reward > $total){
+                                    $reward = $total;
+                                }
+                                $totalR = $total - $reward;
                                 if($total < 500){
                                     $delivery = 75;
                                 }
@@ -59,6 +72,8 @@
                                     $delivery = 0;
                                 }
                                 $ttotal = $total + $delivery;
+                                $totalRew = $totalR + $delivery;
+
                                 echo'
                                 <tr>
                                     <td>'.$sn.'</td>
@@ -78,18 +93,35 @@
             }
 
                 echo'</table>
-            </div>
-            <div class="price-total">
-                <h3>Total:</h3>
+                </div>
+                <div class="price-total">
+                    <h3>Total:</h3>
+                    <form method="POST">
+                        <input type="checkbox" id="check" onChange="this.form.submit()"  name="reward" style="display: inline-block;"';if(isset($_POST['reward'])){echo "checked='checked'";}echo'>
+                        <label> Use Reward</label><br>
+                    </form>
                 <h5>Rs. '.$total.'</h5>';
-                $_SESSION['total'] = $ttotal;
+
+                $_SESSION['reward'] = $reward;
+                 if(isset($_POST['reward'])){
+                    echo '<h5>- '.$reward.'</h5>';
+                    echo '<h5>Rs. '.$totalR.'</h5>';
+                    $_SESSION['total'] = $totalRew;
+                    $_SESSION['totaln'] = $totalR;
+                    $_SESSION['rewCheck'] = TRUE;
+                 }
+                 else{
+                    $_SESSION['total'] = $ttotal;
+                    $_SESSION['totaln'] = $total;
+                 }
+
                 $_SESSION['rpid'] = "kantipur".rand(10, 100000);
                 $pid = $_SESSION['rpid'];
                 ?>
 
                 <form action="https://uat.esewa.com.np/epay/main" method="POST">
-                    <input value="<?php echo $ttotal ?>" name="tAmt" type="hidden">
-                    <input value="<?php echo $total ?>" name="amt" type="hidden">
+                    <input value="<?php echo $_SESSION['total'] ?>" name="tAmt" type="hidden">
+                    <input value="<?php echo $_SESSION['totaln'] ?>" name="amt" type="hidden">
                     <input value="0" name="txAmt" type="hidden">
                     <input value="0" name="psc" type="hidden">
                     <input value="<?php echo $delivery ?>" name="pdc" type="hidden">

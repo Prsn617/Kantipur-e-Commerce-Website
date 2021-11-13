@@ -4,9 +4,9 @@ session_start();
 $_SESSION['admin'] = '';
 
 $reward = 0;
-function emptyInputSignup($name, $email, $pass){
+function emptyInputSignup($name, $email, $num, $pass){
     $result;
-    if(empty($name) || empty($email) || empty($pass)){
+    if(empty($name) || empty($email) || empty($pass) || empty($num)){
         $result = true;
     }
     else{
@@ -49,8 +49,8 @@ function uidExists($conn, $email){
 }
 
 
-function createUser($conn, $name, $email, $pass, $reward){
-    $sql = "INSERT INTO user_info (userName, userEmail, userPass, userReward) VALUES(?, ?, ?, ?);";
+function createUser($conn, $name, $email, $num, $pass, $reward){
+    $sql = "INSERT INTO user_info (userName, userEmail, userPass, userReward) VALUES(?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
         die("<pre>Prepare failed:\n".mysqli_error($conn)."\n$sql</pre>");
@@ -60,7 +60,7 @@ function createUser($conn, $name, $email, $pass, $reward){
 
     $hashed_pass = password_hash($pass, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "sssi", $name, $email, $hashed_pass, $reward);
+    mysqli_stmt_bind_param($stmt, "ssssi", $name, $email, $hashed_pass, $reward);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../login.php");

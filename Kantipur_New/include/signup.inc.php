@@ -4,6 +4,7 @@ if(isset($_POST['signup-submit'])){
 
     $name = $_POST['username'];
     $email = $_POST['email'];
+    $num = $_POST['tel'];
     $pass = $_POST['password'];
     $reward = 0;
 
@@ -25,7 +26,7 @@ if(isset($_POST['signup-submit'])){
         exit();
     }
 
-    createUser($conn, $name, $email, $pass, $reward);
+    createUser($conn, $name, $email, $num, $pass, $reward);
 }
 
 else{

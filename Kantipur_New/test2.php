@@ -59,9 +59,9 @@
                     ]);
 
                     var options = {'title':'Sales per day',
-                                    'width': '700',
+                                    'width': '750',
                                     'height': '600',
-                                    'backgroundColor': 'ffffff'
+                                    'backgroundColor': 'eeeeee'
                                 };
 
                     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -70,45 +70,5 @@
             </script>
             <div id="chart_div"></div>
         </div>
-        <div class="piechart">
-            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-            <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-                    var data = new google.visualization.arrayToDataTable([   
-                        ['Product Name', 'Quantities Sold'],           
-                        <?php 
-                            $sqlprd = "SELECT * FROM product";
-                            $resp = mysqli_query($conn, $sqlprd) or die(mysqli_error($conn));
-                            while($roww = $resp -> fetch_assoc()){
-                                $prd_id = $roww['prdNo'];
-                                $prd_name = $roww['prdName'];
-                                $newsql = "SELECT SUM(pQty) FROM cart WHERE PrdNo = $prd_id AND status = 1";
-                                $que = mysqli_query($conn, $newsql) or die(mysqli_error($conn));
-                                if(mysqli_affected_rows($conn) > 0){
-                                    $result = mysqli_fetch_array($que) or die(mysqli_error($conn));
-                                    $res = $result['SUM(pQty)'];
-                                    echo"
-                                        ['".$prd_name."',".(int)$res."],
-                                    ";
-                                }
-                                //mysqli_close($conn);
-                            }  
-                        ?>
-                    ]);
-
-                    var option2 = {'title':'Total Products Sold',
-                                    'width': '700',
-                                    'height': '600',
-                                    'backgroundColor': 'ffffff'
-                                };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('pie-chart'));
-                    chart.draw(data, option2);
-                }
-            </script>
-            <div id="pie-chart"></div>
-        </div>
-    </main>
+    </main><!--<img src="images/getImage.php?id=';echo $rows['prdNo']; echo'" alt="" srcset="">-->
+    
